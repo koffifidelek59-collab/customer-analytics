@@ -1,0 +1,34 @@
+{
+  "min_status": "WARN",
+  "always": false,
+  "channels": [
+    {
+      "type": "console",
+      "enabled": true
+    },
+    {
+      "type": "file",
+      "enabled": true,
+      "path": "results/last_alert_notification.txt"
+    },
+    {
+      "type": "webhook",
+      "enabled": false,
+      "url": "",
+      "comment": "Set url or env DQ_WEBHOOK_URL (Slack incoming webhook / Teams / generic)"
+    },
+    {
+      "type": "email",
+      "enabled": false,
+      "smtp_host": "",
+      "smtp_port": 587,
+      "smtp_user": "",
+      "smtp_password": "",
+      "from": "",
+      "to": [
+        "data-quality@example.com"
+      ],
+      "comment": "Or set DQ_SMTP_HOST, DQ_SMTP_USER, DQ_SMTP_PASSWORD, DQ_SMTP_FROM"
+    }
+  ]
+}
