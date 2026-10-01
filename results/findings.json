@@ -1,0 +1,76 @@
+{
+  "raw_rows": 2150,
+  "duplicates_removed": 50,
+  "customers": 2100,
+  "revenue": 1021324.45,
+  "avg_purchase": 509.8973789316026,
+  "median_purchase": 519.42,
+  "avg_rating": 3.0336247478143914,
+  "low_rating_pct": 38.73570948217888,
+  "avg_age": 54.37171717171717,
+  "valid_age_pct": 23.57142857142857,
+  "pct_male": 51.391162029459906,
+  "pct_female": 48.608837970540094,
+  "unknown_category": 565,
+  "invalid_dates": 118,
+  "first_purchase": "2022-10-27",
+  "last_purchase": "2025-07-23",
+  "tests": [
+    {
+      "test": "Amount by category",
+      "statistic_name": "Kruskal-Wallis H",
+      "statistic": 3.719752382217846,
+      "p_value": 0.4452595728782236,
+      "n": 1464
+    },
+    {
+      "test": "Amount, men against women",
+      "statistic_name": "Mann-Whitney U",
+      "statistic": 361889.0,
+      "p_value": 0.09533299309856717,
+      "n": 1743
+    },
+    {
+      "test": "Amount, Unknown category against the others",
+      "statistic_name": "Mann-Whitney U",
+      "statistic": 380118.0,
+      "p_value": 0.20876112901809263,
+      "n": 2003
+    },
+    {
+      "test": "Rating mix by category",
+      "statistic_name": "Chi-square (16 df)",
+      "statistic": 8.379415768122495,
+      "p_value": 0.9367602025764671,
+      "n": 1072
+    },
+    {
+      "test": "Purchases evenly spread over 32 complete months",
+      "statistic_name": "Chi-square (31 df)",
+      "statistic": 40.97600417318727,
+      "p_value": 0.1084710463523709,
+      "n": 1917
+    },
+    {
+      "test": "Amount against rating",
+      "statistic_name": "Spearman rho",
+      "statistic": -0.027470070772748184,
+      "p_value": 0.3011033248790539,
+      "n": 1419
+    },
+    {
+      "test": "Amount against age",
+      "statistic_name": "Spearman rho",
+      "statistic": 0.01766752170990663,
+      "p_value": 0.7018317675972706,
+      "n": 472
+    },
+    {
+      "test": "Amounts spread evenly from minimum to maximum",
+      "statistic_name": "Kolmogorov-Smirnov D",
+      "statistic": 0.018577207090319847,
+      "p_value": 0.4882017233903352,
+      "n": 2003
+    }
+  ]
+}

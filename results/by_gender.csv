@@ -1,0 +1,4 @@
+Gender,customers,revenue,avg_purchase,ratings,avg_rating,share_%
+Male,942,448129.42,499.03,671,3.04,44.86
+Female,891,440940.4,521.82,631,3.0,42.43
+Unknown,267,132254.63,508.67,185,3.16,12.71

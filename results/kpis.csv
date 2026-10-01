@@ -1,0 +1,16 @@
+metric,value,base
+total_customers,2100.0,distinct CustomerID
+total_revenue,1021324.45,2003 amounts
+avg_purchase,509.8973789316026,2003 amounts
+median_purchase,519.42,2003 amounts
+avg_rating,3.0336247478143914,1487 ratings on 1-5
+low_rating_pct,38.73570948217888,1487 ratings on 1-5
+avg_age,54.37171717171717,495 valid ages
+pct_male,51.391162029459906,1833 known genders
+pct_female,48.608837970540094,1833 known genders
+unknown_category,565.0,all customers
+unknown_category_pct,26.904761904761905,all customers
+invalid_dates,118.0,all customers
+invalid_dates_pct,5.6190476190476195,all customers
+missing_amount_pct,4.6190476190476195,all customers
+valid_age_pct,23.57142857142857,all customers

@@ -1,0 +1,136 @@
+{
+  "status": "ALERT",
+  "generated_for": "Customer Analytics Task 9",
+  "rows": 2100,
+  "summary": {
+    "rules_total": 6,
+    "breached": 5,
+    "high_breaches": 2,
+    "medium_breaches": 3
+  },
+  "thresholds": [
+    {
+      "id": "invalid_dates",
+      "metric": "invalid_dates_pct",
+      "label": "Invalid purchase dates (%)",
+      "current_value": 5.62,
+      "threshold": 3.0,
+      "severity": "high",
+      "operator": ">=",
+      "rationale": "Trend KPIs (monthly revenue/volume) become unreliable above ~3% bad dates.",
+      "sensitivity": "Lowering to 1% increases false alerts on small samples; 5% would hide material bias.",
+      "breached": true,
+      "recommended_threshold": 3.0,
+      "action_if_breach": "Exclude DateInvalid from trends; fix POS date capture."
+    },
+    {
+      "id": "unknown_category",
+      "metric": "unknown_category_pct",
+      "label": "Unknown product category (%)",
+      "current_value": 26.9,
+      "threshold": 20.0,
+      "severity": "high",
+      "operator": ">=",
+      "rationale": "Category mix and revenue share mislead merchandising when Unknown exceeds one-fifth of rows.",
+      "sensitivity": "15% is aggressive for legacy data; 25% too permissive for assortment decisions.",
+      "breached": true,
+      "recommended_threshold": 15.0,
+      "action_if_breach": "Mandatory category at POS; temporary mapping table for backfill."
+    },
+    {
+      "id": "missing_amount",
+      "metric": "missing_amount_pct",
+      "label": "Missing purchase amount (%)",
+      "current_value": 4.62,
+      "threshold": 5.0,
+      "severity": "high",
+      "operator": ">=",
+      "rationale": "Revenue KPIs understate performance if amounts are missing.",
+      "sensitivity": "Current value is near the threshold; small data shifts can flip OK/ALERT.",
+      "breached": false,
+      "recommended_threshold": 5.0,
+      "action_if_breach": "Require amount on closed transactions."
+    },
+    {
+      "id": "missing_age",
+      "metric": "missing_age_pct",
+      "label": "Missing age after domain purge (%)",
+      "current_value": 76.43,
+      "threshold": 30.0,
+      "severity": "medium",
+      "operator": ">=",
+      "rationale": "Age-band analysis and demographic targeting need sufficient coverage.",
+      "sensitivity": "Source pollution (-1, 200) drives high missingness after purge; threshold reflects residual risk not raw nulls.",
+      "breached": true,
+      "recommended_threshold": 25.0,
+      "action_if_breach": "Block ages outside 1\u2013100 at entry."
+    },
+    {
+      "id": "missing_rating",
+      "metric": "missing_rating_pct",
+      "label": "Missing / invalid ratings (%)",
+      "current_value": 29.19,
+      "threshold": 25.0,
+      "severity": "medium",
+      "operator": ">=",
+      "rationale": "Experience KPIs need representative rating coverage.",
+      "sensitivity": "Out-of-scale values (e.g. 10) inflate missingness after domain filter.",
+      "breached": true,
+      "recommended_threshold": 20.0,
+      "action_if_breach": "Constrain UI widget to 1\u20135 stars."
+    },
+    {
+      "id": "duplicates",
+      "metric": "duplicate_ids_removed",
+      "label": "Duplicate CustomerIDs removed (count)",
+      "current_value": 50,
+      "threshold": 1,
+      "severity": "medium",
+      "operator": ">=",
+      "rationale": "Duplicate IDs inflate customer counts and distort per-customer metrics.",
+      "sensitivity": "Any duplicate is a process defect; threshold is count-based not percentage.",
+      "breached": true,
+      "recommended_threshold": 1,
+      "action_if_breach": "Enforce unique CustomerID upstream."
+    }
+  ],
+  "headroom": [
+    {
+      "id": "invalid_dates",
+      "distance_to_threshold": 2.62,
+      "pct_over_threshold": 87.3
+    },
+    {
+      "id": "unknown_category",
+      "distance_to_threshold": 6.9,
+      "pct_over_threshold": 34.5
+    },
+    {
+      "id": "missing_amount",
+      "distance_to_threshold": -0.38,
+      "pct_over_threshold": 0
+    },
+    {
+      "id": "missing_age",
+      "distance_to_threshold": 46.43,
+      "pct_over_threshold": 154.8
+    },
+    {
+      "id": "missing_rating",
+      "distance_to_threshold": 4.19,
+      "pct_over_threshold": 16.8
+    },
+    {
+      "id": "duplicates",
+      "distance_to_threshold": 49,
+      "pct_over_threshold": 4900.0
+    }
+  ],
+  "recommendations": [
+    "Keep invalid_dates threshold at 3% \u2014 material for trend integrity.",
+    "Tighten unknown_category target to 15% as a stretch goal once POS controls land.",
+    "missing_amount sits near 5% \u2014 monitor weekly to avoid silent revenue undercount.",
+    "Age and rating thresholds remain medium until source widgets are constrained.",
+    "Wire the same threshold table into Airflow sensors for automated gatekeeping."
+  ]
+}

@@ -1,0 +1,162 @@
+{
+  "status": "ALERT",
+  "generated_at": "2026-10-01T17:44:00.411664+00:00",
+  "summary": {
+    "total_alerts": 5,
+    "high": 2,
+    "medium": 3,
+    "low": 0
+  },
+  "metrics": {
+    "rows": 2100,
+    "invalid_dates_count": 118,
+    "invalid_dates_pct": 5.62,
+    "unknown_category_count": 565,
+    "unknown_category_pct": 26.9,
+    "missing_amount_pct": 4.62,
+    "missing_age_pct": 76.43,
+    "missing_rating_pct": 29.19,
+    "duplicate_ids_removed": 50
+  },
+  "policy_rules": [
+    {
+      "id": "invalid_dates",
+      "title": "Invalid purchase dates",
+      "severity": "high",
+      "threshold_pct": 3.0,
+      "value_pct": 5.62,
+      "breached": true,
+      "message": "118 rows (5.62%) have invalid dates.",
+      "recommendation": "Enforce ISO date validation at POS / ingestion; exclude flagged rows from trend KPIs."
+    },
+    {
+      "id": "unknown_category",
+      "title": "Unknown product category",
+      "severity": "high",
+      "threshold_pct": 20.0,
+      "value_pct": 26.9,
+      "breached": true,
+      "message": "565 rows (26.9%) are Unknown category.",
+      "recommendation": "Mandatory category at capture before merchandising or assortment decisions."
+    },
+    {
+      "id": "missing_age",
+      "title": "Missing age after domain purge",
+      "severity": "medium",
+      "threshold_pct": 30.0,
+      "value_pct": 76.43,
+      "breached": true,
+      "message": "76.43% of ages missing after removing values outside 1\u2013100.",
+      "recommendation": "Block ages outside 1\u2013100 at entry; re-collect for critical segments."
+    },
+    {
+      "id": "missing_rating",
+      "title": "Missing / invalid ratings",
+      "severity": "medium",
+      "threshold_pct": 25.0,
+      "value_pct": 29.19,
+      "breached": true,
+      "message": "29.19% ratings missing after restricting to 1\u20135.",
+      "recommendation": "Constrain rating widget to 1\u20135; monitor completion rate."
+    },
+    {
+      "id": "missing_amount",
+      "title": "Missing purchase amount",
+      "severity": "high",
+      "threshold_pct": 5.0,
+      "value_pct": 4.62,
+      "breached": false,
+      "message": "4.62% of amounts are missing.",
+      "recommendation": "Amount required for closed transactions."
+    },
+    {
+      "id": "duplicates",
+      "title": "Duplicate CustomerIDs in source",
+      "severity": "medium",
+      "threshold_count": 1,
+      "value_count": 50,
+      "breached": true,
+      "message": "50 duplicate CustomerIDs removed at ETL.",
+      "recommendation": "Enforce unique CustomerID in upstream system."
+    }
+  ],
+  "alerts": [
+    {
+      "id": "invalid_dates",
+      "title": "Invalid purchase dates",
+      "severity": "high",
+      "message": "118 rows (5.62%) have invalid dates.",
+      "recommendation": "Enforce ISO date validation at POS / ingestion; exclude flagged rows from trend KPIs.",
+      "threshold": {
+        "threshold_pct": 3.0
+      },
+      "value": {
+        "value_pct": 5.62
+      }
+    },
+    {
+      "id": "unknown_category",
+      "title": "Unknown product category",
+      "severity": "high",
+      "message": "565 rows (26.9%) are Unknown category.",
+      "recommendation": "Mandatory category at capture before merchandising or assortment decisions.",
+      "threshold": {
+        "threshold_pct": 20.0
+      },
+      "value": {
+        "value_pct": 26.9
+      }
+    },
+    {
+      "id": "missing_age",
+      "title": "Missing age after domain purge",
+      "severity": "medium",
+      "message": "76.43% of ages missing after removing values outside 1\u2013100.",
+      "recommendation": "Block ages outside 1\u2013100 at entry; re-collect for critical segments.",
+      "threshold": {
+        "threshold_pct": 30.0
+      },
+      "value": {
+        "value_pct": 76.43
+      }
+    },
+    {
+      "id": "missing_rating",
+      "title": "Missing / invalid ratings",
+      "severity": "medium",
+      "message": "29.19% ratings missing after restricting to 1\u20135.",
+      "recommendation": "Constrain rating widget to 1\u20135; monitor completion rate.",
+      "threshold": {
+        "threshold_pct": 25.0
+      },
+      "value": {
+        "value_pct": 29.19
+      }
+    },
+    {
+      "id": "duplicates",
+      "title": "Duplicate CustomerIDs in source",
+      "severity": "medium",
+      "message": "50 duplicate CustomerIDs removed at ETL.",
+      "recommendation": "Enforce unique CustomerID in upstream system.",
+      "threshold": {
+        "threshold_count": 1
+      },
+      "value": {
+        "value_count": 50
+      }
+    }
+  ],
+  "analysis": {
+    "headline": "Data quality status is ALERT. 5 policy rule(s) breached (2 high, 3 medium).",
+    "priority_actions": [
+      "Enforce ISO date validation at POS / ingestion; exclude flagged rows from trend KPIs.",
+      "Mandatory category at capture before merchandising or assortment decisions."
+    ],
+    "kpi_impact": [
+      "Trend KPIs must exclude DateInvalid rows.",
+      "Category revenue share is biased while Unknown remains elevated.",
+      "Age-band analysis is limited by missing age after domain purge."
+    ]
+  }
+}

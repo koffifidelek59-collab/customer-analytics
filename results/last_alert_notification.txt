@@ -1,0 +1,22 @@
+[Customer Analytics Task 9] Data quality: ALERT
+Time (UTC): 2026-10-01 17:57:42
+Alerts: 5 (high=2, medium=3)
+
+Key metrics:
+  · rows=2100
+  · invalid_dates=5.62%
+  · unknown_category=26.9%
+  · missing_age=76.43%
+  · missing_rating=29.19%
+
+Breaches:
+  [HIGH] Invalid purchase dates: 118 rows (5.62%) have invalid dates.
+      → Enforce ISO date validation at POS / ingestion; exclude flagged rows from trend KPIs.
+  [HIGH] Unknown product category: 565 rows (26.9%) are Unknown category.
+      → Mandatory category at capture before merchandising or assortment decisions.
+  [MEDIUM] Missing age after domain purge: 76.43% of ages missing after removing values outside 1–100.
+      → Block ages outside 1–100 at entry; re-collect for critical segments.
+  [MEDIUM] Missing / invalid ratings: 29.19% ratings missing after restricting to 1–5.
+      → Constrain rating widget to 1–5; monitor completion rate.
+  [MEDIUM] Duplicate CustomerIDs in source: 50 duplicate CustomerIDs removed at ETL.
+      → Enforce unique CustomerID in upstream system.

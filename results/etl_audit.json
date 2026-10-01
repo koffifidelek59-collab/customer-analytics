@@ -1,0 +1,38 @@
+{
+  "started_at": "2026-10-01T17:43:59.058931+00:00",
+  "rows_in": 2150,
+  "rules": [
+    {
+      "rule": "drop_duplicate_customer_id",
+      "removed": 50
+    },
+    {
+      "rule": "standardize_gender",
+      "known": 1833
+    },
+    {
+      "rule": "age_domain_1_100",
+      "invalidated": 1099
+    },
+    {
+      "rule": "rating_domain_1_5",
+      "invalidated": 291
+    },
+    {
+      "rule": "date_parse_and_flag",
+      "invalid_dates": 118
+    },
+    {
+      "rule": "category_unknown_fill",
+      "unknown": 565
+    }
+  ],
+  "duplicate_ids_removed": 50,
+  "invalid_ages": 1099,
+  "invalid_ratings": 291,
+  "missing_amount": 97,
+  "invalid_dates": 118,
+  "unknown_category": 565,
+  "rows_out": 2100,
+  "finished_at": "2026-10-01T17:43:59.100050+00:00"
+}

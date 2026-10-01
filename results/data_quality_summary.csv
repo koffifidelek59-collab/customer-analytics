@@ -1,0 +1,12 @@
+check,rows,base,share_%
+Rows as supplied,2150,2150,100.0
+Duplicate rows (exact copies),50,2150,2.33
+Customers after de-duplication,2100,2100,100.0
+"Age missing or sentinel (-1, 200)",1605,2100,76.43
+Rating missing,322,2100,15.33
+Rating out of scale (10),291,2100,13.86
+Purchase date invalid (32/13/2020),118,2100,5.62
+Product category missing,565,2100,26.9
+Gender missing,267,2100,12.71
+Purchase amount missing,97,2100,4.62
+Phone missing or placeholder,2100,2100,100.0

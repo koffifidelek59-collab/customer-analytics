@@ -1,0 +1,9 @@
+test,statistic_name,statistic,p_value,n,significant_at_5%
+Amount by category,Kruskal-Wallis H,3.719752382217846,0.4452595728782236,1464,False
+"Amount, men against women",Mann-Whitney U,361889.0,0.09533299309856717,1743,False
+"Amount, Unknown category against the others",Mann-Whitney U,380118.0,0.20876112901809263,2003,False
+Rating mix by category,Chi-square (16 df),8.379415768122495,0.9367602025764671,1072,False
+Purchases evenly spread over 32 complete months,Chi-square (31 df),40.97600417318727,0.1084710463523709,1917,False
+Amount against rating,Spearman rho,-0.027470070772748184,0.3011033248790539,1419,False
+Amount against age,Spearman rho,0.01766752170990663,0.7018317675972706,472,False
+Amounts spread evenly from minimum to maximum,Kolmogorov-Smirnov D,0.018577207090319847,0.4882017233903352,2003,False
